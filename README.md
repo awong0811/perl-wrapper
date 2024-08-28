@@ -4,7 +4,7 @@ I'm explaining the wrapper pay attention.
 ## MyModule.pm
 This file is analogous to the SphereTools.pm in the SphereTools folder. You'll find two functions: one that returns a perl array of elements and one that returns a number.
 
-The reason I did it this way is because there was two functions in SphereTools I wanted to mimic and test: apbs which returns a scalar and alanize which returns an array.
+The reason I did it this way is because there were two functions in SphereTools I wanted to mimic and test: apbs which returns a scalar and alanize which returns an array.
 
 ## test.pl
 This file is analogous to wrapper.pl. You'll find some if else statements in there. This is because each time we call the wrapper, we usually only want to run one function. If I had to write a separate wrapper file for every function, you would probably have 50 wrapper.pl files. So instead, we are passing in arguments to activate the section of code. This way, I can have only one wrapper.pl file that calls all the 50 different functions, each in their own section.
