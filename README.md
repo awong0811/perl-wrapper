@@ -1,6 +1,3 @@
-# Wassup dumbass
-I'm explaining the wrapper pay attention.
-
 ## MyModule.pm
 This file is analogous to the SphereTools.pm in the SphereTools folder. You'll find two functions: one that returns a perl array of elements and one that returns a number.
 
