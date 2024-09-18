@@ -71,6 +71,18 @@ def custom_list(number:int, first:str, second:str, third:str):
         return ret
     except subprocess.CalledProcessError as e:
         raise Exception(f"ERror occured: {e.stderr}")
+    
+def get_dictionary():
+    try:
+        result = subprocess.run(
+            ['perl', 'test.pl', '--dict'],
+            stdout=subprocess.PIPE,
+            text=True
+        )
+        ret = json.loads(result.stdout)
+        return ret
+    except subprocess.CalledProcessError as e:
+        raise Exception(f"ERror occured: {e.stderr}")
 
 # Example usage
 if __name__ == "__main__":
@@ -87,3 +99,6 @@ if __name__ == "__main__":
     print("List: ", list, ", Variable type: ", type(list))
     list = custom_list(4, 'list', 'with', 'inputs')
     print('Custom List: ', list)
+    dict = get_dictionary()
+    print(dict)
+

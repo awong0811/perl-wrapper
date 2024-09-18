@@ -12,7 +12,8 @@ GetOptions ('num' => \$num,
             'array' => \$array,
             'num2' => \$num2,
             'list' => \$list,
-            'clist' => \$clist);
+            'clist' => \$clist,
+            'dict' => \$dict);
 
 if ($num) {
     my $ret = get_num();
@@ -38,5 +39,9 @@ elsif ($clist) {
     $third = $ARGV[3];
     $fourth = $ARGV[4];
     my @list = custom_list($num, $first, $second, $third, $fourth);
-    print to_json(\@list)
+    print to_json(\@list);
+}
+elsif ($dict) {
+    my %dict = get_dictionary();
+    print to_json(\%dict);
 }
