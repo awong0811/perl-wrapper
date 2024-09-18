@@ -1,22 +1,42 @@
 BEGIN {
-    use lib '.';
+    use FindBin qw($Bin);
+    use lib $FindBin::Bin;
 }
 
 use Getopt::Long qw(:config no_ignore_case);
-use MyModule;
+use JSON;
 
+use MyModule::MyModule;
 
 GetOptions ('num' => \$num,
-            'array' => \$array);
+            'array' => \$array,
+            'num2' => \$num2,
+            'list' => \$list,
+            'clist' => \$clist);
 
 if ($num) {
-    my $num = MyModule::get_num();
-    print "$num\n";
+    my $ret = get_num();
+    print "$ret\n";
+    # print to_json($ret);
 }
 elsif ($array) {
-    my @array = MyModule::get_array();
+    my @array = get_array();
     print join(' ', @array), "\n";
 }
-
-
-
+elsif ($num2) {
+    my $ret = get_num2();
+    print to_json($ret);
+}
+elsif ($list) {
+    my @list = get_list();
+    print to_json(\@list);
+}
+elsif ($clist) {
+    $num = $ARGV[0];
+    $first = $ARGV[1];
+    $second = $ARGV[2];
+    $third = $ARGV[3];
+    $fourth = $ARGV[4];
+    my @list = custom_list($num, $first, $second, $third, $fourth);
+    print to_json(\@list)
+}
