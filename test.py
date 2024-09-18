@@ -83,6 +83,33 @@ def get_dictionary():
         return ret
     except subprocess.CalledProcessError as e:
         raise Exception(f"ERror occured: {e.stderr}")
+    
+def nested_dictionary():
+    try:
+        result = subprocess.run(
+            ['perl', 'test.pl', '--ndict'],
+            stdout=subprocess.PIPE,
+            text=True
+        )
+        ret = json.loads(result.stdout)
+        return ret
+    except subprocess.CalledProcessError as e:
+        raise Exception(f"ERror occured: {e.stderr}")
+    
+def arrays_and_dictionaries():
+    try:
+        result = subprocess.run(
+            ['perl', 'test.pl', '--ad'],
+            stdout=subprocess.PIPE,
+            text=True
+        )
+        ret = json.loads(result.stdout)
+        array1 = ret[0]
+        array2 = ret[1]
+        ndict = ret[2]
+        return (array1, array2, ndict)
+    except subprocess.CalledProcessError as e:
+        raise Exception(f"ERror occured: {e.stderr}")
 
 # Example usage
 if __name__ == "__main__":
@@ -101,4 +128,17 @@ if __name__ == "__main__":
     print('Custom List: ', list)
     dict = get_dictionary()
     print(dict)
-
+    nested_dict = nested_dictionary()
+    print(nested_dict)
+    print('1st level key: vegetables, 2nd level key: broccoli')
+    print(nested_dict['vegetables']['broccoli'])
+    print('1st level key: fruits, 2nd level key: apple')
+    print(nested_dict['fruits']['apple'])
+    print('Arrays and Dictionaries')
+    arrs_dict = arrays_and_dictionaries()
+    print('Item 1: Array')
+    print(arrs_dict[0])
+    print('Item 2: Array')
+    print(arrs_dict[1])
+    print('Item 3: Nested Dictionary')
+    print(arrs_dict[2])

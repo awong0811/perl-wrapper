@@ -13,7 +13,9 @@ GetOptions ('num' => \$num,
             'num2' => \$num2,
             'list' => \$list,
             'clist' => \$clist,
-            'dict' => \$dict);
+            'dict' => \$dict,
+            'ndict' => \$ndict,
+            'ad' => \$ad);
 
 if ($num) {
     my $ret = get_num();
@@ -44,4 +46,12 @@ elsif ($clist) {
 elsif ($dict) {
     my %dict = get_dictionary();
     print to_json(\%dict);
+}
+elsif ($ndict) {
+    my %nested_dictionary = nested_dictionary();
+    print to_json(\%nested_dictionary);
+}
+elsif ($ad) {
+    my @ret = arrays_and_dictionaries();
+    print to_json(\@ret);
 }
