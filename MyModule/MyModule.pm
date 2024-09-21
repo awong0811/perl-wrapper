@@ -1,6 +1,6 @@
 package MyModule::MyModule;
 use Exporter qw(import);
-our @EXPORT = qw(get_array get_num get_num2 get_list custom_list get_dictionary nested_dictionary arrays_and_dictionaries); 
+our @EXPORT = qw(get_array get_num get_list custom_list get_dictionary nested_dictionary arrays_and_dictionaries); 
 
 sub get_num {
     return 42;
@@ -9,10 +9,6 @@ sub get_num {
 sub get_array {
     my @array = ("apple", "banana", "cherry");
     return @array;
-}
-
-sub get_num2 {
-    return 50;
 }
 
 sub get_list {

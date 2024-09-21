@@ -16,6 +16,21 @@ def get_num():
     except subprocess.CalledProcessError as e:
         raise Exception(f"Error occurred: {e.stderr}")
 
+def get_num2():
+    # Call the Perl script and capture the output
+    try:
+        result = subprocess.run(
+            ['perl', 'test.pl', '--num2'],
+            check=True,
+            stdout=subprocess.PIPE,
+            stderr=subprocess.PIPE,
+            text=True
+        )
+        ret = json.loads(result.stdout)  # Capture the output and remove any trailing newlines
+        return ret
+    except subprocess.CalledProcessError as e:
+        raise Exception(f"Error occurred: {e.stderr}")
+
 def get_array():
     try:
         # Call the Perl script/module and capture the output
@@ -31,11 +46,11 @@ def get_array():
     except subprocess.CalledProcessError as e:
         raise Exception(f"ERror occured: {e.stderr}")
 
-def get_num2():
+def get_array2():
     # Call the Perl script and capture the output
     try:
         result = subprocess.run(
-            ['perl', 'test.pl', '--num2'],
+            ['perl', 'test.pl', '--array2'],
             check=True,
             stdout=subprocess.PIPE,
             stderr=subprocess.PIPE,
